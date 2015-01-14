@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Phys 142 CAPA 11</title>
+	<link rel="stylesheet" type="text/css" href="css/capa.css">
+    <link rel="shortcut icon" href="./imgs/capa.ico" >
+	<script src="js/calc11.js" type="text/javascript" ></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+   <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+   <link href='http://fonts.googleapis.com/css?family=Wellfleet' rel='stylesheet' type='text/css'>
+   <link href='http://fonts.googleapis.com/css?family=Wellfleet' rel='stylesheet' type='text/css'>
+   <link href='http://fonts.googleapis.com/css?family=Arvo:400,700,400italic,700italic' rel='stylesheet' type='text/css'>	
+   <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+   <link href='http://fonts.googleapis.com/css?family=Goudy+Bookletter+1911' rel='stylesheet' type='text/css'>
+
+   <script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-49659117-1', 'farazoman.com');
+	  ga('send', 'pageview');
+
+	</script>
+	<script type="text/x-mathjax-config">
+  	MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+	</script>
+	<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+	</script>
+
+</head>
+
+<body>
+	<nav>
+	<ul>
+		<li><a class="scroll" href='#top'><img src='./imgs/capa.ico' style='margin-top: .8em'/></a></li>
+		<li><a class="scroll" href="#q1">Question 1</a></li>
+		<li><a class="scroll" href="#q2">Question 2</a></li>
+		<li><a class="scroll" href="#q3">Question 3</a></li>
+		<li><a class="scroll" href="#q4">Question 4</a></li>
+		<li><a class="scroll" href="#q5">Question 5</a></li>
+		<li><a class="scroll" href="#q6">Question 6</a></li>
+		<li><a class="scroll" href="#q7">Question 7</a></li>
+		<li><a class="scroll" href="#q8">Question 8</a></li>
+		<li><a class="scroll" href="#q9">Question 9</a></li>
+		<li><a class="scroll" href="#q10">Question 10</a></li>
+		<li><a class="scroll" href="#q11">Question 11</a></li>
+	</ul>
+	</nav>
+
+<script>
+$(document).ready(function(){
+$(".toggle_container").hide(); 
+$("button.reveal").click(function(){
+    $(this).toggleClass("active").next().slideToggle("fast");
+    
+    if ($.trim($(this).text()) === 'Hide') {
+        $(this).text('Explanation');
+    } else {
+        $(this).text('Hide');        
+    }
+    
+    return false; 
+});
+ $("a[href='" + window.location.hash + "']").parent(".reveal").click();
+});
+/*	Old scrolling code
+	$(".scroll").click(function(event){
+         event.preventDefault();
+         //calculate destination place
+         var dest=0;
+         if($(this.hash).offset().top > $(document).height()-$(window).height()){
+              dest=$(document).height()-$(window).height();
+         }else{
+              dest=$(this.hash).offset().top;
+         }
+         //go to destination
+         $('html,body').animate({scrollTop:dest}, 1000,'swing');
+     });
+*/	
+
+	/*$(window).scroll(function(e){
+	  parallax();
+	});
+	function parallax(){
+	  var scrolled = $(window).scrollTop();
+	  $('.bg').css('top',-(scrolled*0.2)+'px');
+	}*/
+
+	function scroll_if_anchor(href) {
+	    href = typeof(href) == "string" ? href : $(this).attr("href");
+
+	    if(!href) return;
+
+	    var fromTop = 250;
+
+	    if(href.charAt(0) == "#") {
+	        var $target = $(href);
+	        
+	        if($target.length) {
+	            $('html, body').animate({ scrollTop: $target.offset().top - fromTop });
+	            if(history && "pushState" in history) {
+	                history.pushState({}, document.title, window.location.pathname + href);
+	                return false;
+	            }
+	        }
+	    }
+	}    
+
+	scroll_if_anchor(window.location.hash);
+
+	$("body").on("click", "a", scroll_if_anchor);
+</script>
+
+	<!--<div class="bg"></div>-->
+		<p id="top"></p>
+	<div id="slide1">
+		<div id='opaque'>
+		<p><b>CAPA 11</b></p>
+		<p>The last CAPA</p>
+		<p>
+		Enter your given CAPA values, and click 'Calculate' to recieve the result.</br>
+		When entering values 'e' notation is acceptable but doing '*10^2' is not.
+		The purpose of this resource is for referencing when studying.
+		</p>
+		</div>
+	</div>
+	
+	<div id="slide2">
+
+		<h1 id="q1">Question 1</h1>
+		<p>
+			Wavelength <input type="number" id="q1_lightw" />nm</br>
+			Number of Interference Minima <input type="number" id="q1_intmin" /></br>
+			Number of Interference Minima After Submerging <input type="number" id="q1_intmin2" /></br>
+		</p>
+		<button onclick="question1()">Calculate</button>
+		<p>
+			answer to a: <input type="text" id="q1a" onclick="SelectAll('q1a');" readonly /></br>
+			answer to b: <input id="q1b" onclick="SelectAll('q1b');" readonly />
+		</p>
+		<button class="reveal">Explanation</button>
+		<div class="toggle_container">
+			<div class="block">
+		<p>	
+			<b>Part a</b></br>
+			<!--The equation to find the optical path difference is $D = m\lambda$ for a maximum (where $m = 0,1,2,3...$).We can derive this to get the equation for thin film interference.</br>-->
+			The equation for thin film interference between one boundary (because the air is trapped between two sheets of glass) for a minimum is</br>
+			$2nd = m\lambda$</br>
+			Where $n$ is the index of refraction of the substance between the boundaries, $d$ is the thickness or distance, and $\lambda$ is of course the wavelength.</br>
+			We know that a certain number of interference minima can be seen, depending on the value of $m$.
+		</p>
+		<p>
+			The first minimum appears when $2nb = 0\lambda$, and so on that</br>
+			2<sup>nd</sup> min: $2nd = 1\lambda$</br>
+			3<sup>rd</sup> min: $2nd = 2\lambda$</br>
+			...<br>
+			x<sup>th</sup> min: $2nd = (x-1)\lambda$</br>
+			$m$ then simply becomes "the number of visible minima" minus 1.
+			Adjusting the equation a bit, since $n$ of the air between the glass = 1,</br>
+			$d = {(x-1)\lambda \over 2}$
+		</p>
+		<p>
+			<b>Part b</b></br>
+			Now that we know the distance between the plates, we can rearrange the above equation again to solve for $n$:</br>
+			$n = {m\lambda \over 2d}$</br>
+			Following the same reasoning as above, $m$ becomes the number of minima minus 1 again, and $d$ is the answer from part a. The value of $\lambda$ used is the same as well.
+		</p>		
+			</div>
+		</div>
+
+	</div>
+
+	<div id="slide3">
+		
+	</div>
+
+	<div id="slide2">
+
+		<h1 id="q2">Question 2</h1>
+		<p>
+			Maximum Interference <input type="number" id="q2_intmax" />nm</br>
+			Minimum Interference <input type="number" id="q2_intmin" />nm</br>
+			n of the film <input type="number" id="q2_n" /></br>
+		</p>
+		<button onclick="question2()">Calculate</button>
+		<p>
+			answer: <input id="q2_ans" onclick="SelectAll('q2_ans');" readonly />
+		</p>
+		<button class="reveal">Explanation</button>
+		<div class="toggle_container">
+			<div class="block">
+		<p>	
+			The equation for phase change at one boundary (there is a film of soap, and then air) is</br>
+			for a maximum: $2nd = {(m+{1 \over 2})\lambda}$</br>
+			for a minimum: $2nd = m\lambda$</br>
+			Where $m = 0,1,2...$</br>
+			Equate these two equations to first solve for m.</br>
+			${(m+{1 \over 2})} {\lambda_{min} \over 2n }= {{(m+1)} {\lambda_{max} \over 2n}}$</br>
+			rearrange:</br>
+			It seems that the value for m for a min becomes m+1 because the 'm' needs to be adjacent, but does not have to be the same. In fact, because m is an arbitrary integer, technically one can solve for the values of t for a few values of m to find which is the common thickness between the max and min wavelengths.</br>
+			$m = {{\lambda_{min}-{{1\over 2} \lambda_{max}}}\over {\lambda_{max}-\lambda_{min}}}$</br>
+			now that $n$ has been found, simply substitute the value of $n$ into either max/min equation to find the thickness. Everything should check out if they're equal.</br>
+			For a more thorough solving of this question, check page four of <a href="http://www.physics.ohio-state.edu/~fcd/133/OldSolutions/133.00S/00Sfinalwrkd.pdf">this document</a>.
+		</p>
+			
+			</div>
+		</div>
+
+	</div>
+
+	<div id="slide4">
+		
+	</div>
+
+	<div id="slide2">
+
+		<h1 id="q3">Question 3</h1>
+		<p>
+			n of Soap Film <input type="number" id="q3_filmn" /></br>
+			Wavelength of light <input type="number" id="q3_redw" />nm</br>
+			n of Glass <input type="number" id="q3_glassn" /></br>
+		</p>
+		<button onclick="question3()">Calculate</button>
+		<p>
+			answer to a: <input id="q3a" onclick="SelectAll('q3a');" readonly /></br>
+			answer to b: <input id="q3b" onclick="SelectAll('q3b');" readonly />
+		</p>
+		<button class="reveal">Explanation</button>
+		<div class="toggle_container">
+			<div class="block">
+		<p>	
+			<b>Part a</b></br>
+			The equation to find the thickness of an antireflection coating (destructive interference/min) is</br>
+			$d = (m-{1 \over 2}){\lambda \over 2n}$    (textbook equation 21.33)</br>
+			(where $m = 0,1,2...$)
+		</p>
+		<p>
+			<b>Part b</b></br>
+			For a wave reflecting from a substance with a higher index of refraction (film to glass), the wavelength is shifted by $\pi$ radians, or 180 degrees, meaning that the wave is shifted twice going from air to the soap film to the sheet of glass.  The new maximum wavelength of reflection then becomes $\lambda \over 2$.
+		</p>
+		<p>
+				To be a little more explicit, because of the double phase shift, the path that the wave takes through the film/soap combination is 1 wavelength instead of half that. You can solve for this using the above equation by taking away the $1 \over 2$ in the equation from part a:</br>
+				$d = (m-{1 \over 2}){\lambda \over n}$</br>
+				If you solve for $\lambda$ using a value of 1 for $m$, the $d$ found from part a and the $n$ of air, a value of $\lambda \over 2$ should be found.
+		</p>
+			</div>
+		</div>
+
+	</div>
+
+	<div id="slide5">
+		
+	</div>
+
+	<div id="slide2">
+
+		<h1 id="q4">Question 4</h1>
+		<p>
+			Index of Refraction of Oil <input type="number" id="q4_ior_o" /></br>
+			Volume of oil <input type="number" id="q4_vol" />m<sup>3</sup></br>
+			Wavelength <input type="number" id="q4_lambda" />nm</br>
+			Index of Refraction of Ocean Water <input type="number" id="q4_ior_w" /></br>
+		</p>
+		<button onclick="question4()">Calculate</button>
+		<p>
+			answer: <input id="q4_ans" onclick="SelectAll('q4_ans');" readonly />
+		</p>
+		<button class="reveal">Explanation</button>
+		<div class="toggle_container">
+			<div class="block">
+		<p>
+			The equation to find the thickness of a film using the maximum is</br>
+			$d = {m\lambda \over 2n}$ (derived from textbook equation 21.32).</br>
+			The index of refraction of ocean water isn't actually necessary for the calculation, however it does show that since the ior of air < oil< water, there is a change in phase (as explained in question 3). The textbook equation already reflects this double phase change.</br>
+			Since the given wavelength occurs at a first order maximum, a value of $m = 1$ is used.</br>
+			$\lambda$ is converted from nm into m by multiplying by 10<sup>-9</sup>, to give the thickness of the oil layer in metres.</br>
+			Finally, the volume is divided by the thickness to recieve a surface area:</br>
+			${V (m^3) \over d (m)} = A (m^2)$
+		</p>
+			</div>
+		</div>
+
+	</div>
+	
+	<div id="slide6">
+		
+	</div>
+
+	<div id="slide2">
+
+		<h1 id="q5">Question 5</h1>
+		<p>
+			n<sub>1</sub> of Material <input type="number" id="q5_n1" /></br>
+			n<sub>2</sub> of Glass <input type="number" id="q5_n2" /></br>
+			Smaller Wavelength of Incidence Light <input type="number" value="400" id="q5_w1" />nm</br>
+			Larger Wavelength of Incidence Light <input type="number" value="600" id="q5_w2" />nm</br>
+		</p>
+		<button onclick="question5()">Calculate</button>
+		<p>
+			answer to a: <input id="q5a" onclick="SelectAll('q5a');" readonly /></br>
+			answer to b: <input id="q5b" onclick="SelectAll('q5b');" readonly />
+		</p>
+		<button class="reveal">Explanation</button>
+		<div class="toggle_container">
+			<div class="block">
+		<p>
+			<b>Part a</b></br>
+			Recall the equation to find the thickness of a thin film with a known maximum wavelength.</br>
+			$d = {m\lambda \over 2n}$ (derived from textbook equation 21.32).</br>
+			Like question 4, the index of refraction of glass is not necessary for the calculation, but shows that there is a double phase shift.</br>
+			Using a value of $m = 2$, the equation simplifies to</br>
+			$d = {\lambda \over n}$ Where $n$ is the index of refraction of the coating material, and $\lambda$ is 600 nm.
+		</p>
+		<p>
+			<b>Part b</b></br>
+			Using the equation for phase change at a minimum:</br>
+			$2nd = (m+{1 \over 2})\lambda$</br>
+			Then using a value of $m = 2$, and knowing that $d = {600 \over n}$, the equation simplifies to</br>
+			$\lambda = {2(600) \over (2 + {1 \over 2})} = 480 nm$.</br>
+			<!--Seems like if everyone gets the same wavelength boundaries, then the answer to part b is the same for everyone!-->
+		</p>
+			</div>
+		</div>
+
+	</div>
+
+	<div id="slide7">
+		
+	</div>
+
+	<div id="slide2">
+
+		<h1 id="q6">Question 6</h1>
+		<p>
+			<!--
+			Angles of triangle <input type="number" value="45" id="q6_ang1" />&deg;</br>
+				<input type="number" value="45" id="q6_ang2" />&deg;</br>
+				<input type="number" value="90" id="q6_ang3" />&deg;</br>
+			-->
+			n Outside Triangle <input type="number" value="1" id="q6_n" /></br>
+			n<sub>1</sub> Inside Triangle <input type="number" id="q6_n1" /></br>
+			Angle of light Hitting Triangle from Normal <input type="number" id="q6_ang4" />&deg;</br>
+		</p>
+		<button onclick="question6(); showHide();">Calculate</button>
+		<p>
+			answer to a: <input id="q6a" onclick="SelectAll('q6a');" readonly /></br>
+			answer to b: <input id="q6b" onclick="SelectAll('q6b');" readonly /></br>
+			answer to c: <input id="q6c" onclick="SelectAll('q6c');" readonly /></br>
+			answer to d: Yes<!--<span id="hiding" style="display:none; inline-block;">Yes</span>--></br>
+			answer to e: <input id="q6e" onclick="SelectAll('q6e');" readonly /></br>
+			answer to f: <input id="q6f" onclick="SelectAll('q6f');" readonly />
+		</p>
+		<button class="reveal">Explanation</button>
+		<div class="toggle_container">
+			<div class="block">
+		<p>
+			<b>Part a</b></br>
+			The equation for total internal reflection is derived from Snell's law, and is as follows:</br>
+			$n_1 sin (\theta) = n_2 sin (90^{\circ})$</br>
+			There is no change in direction of the incident light when it enters the hypotenuse of the prism because it is normal to the edge of entry (therefore, snell's law dictates that there is no bending of the light). Because of this, the light, after entering the prism, hits the opposite edge at an angle that is 45&deg; from the normal of that edge. We can then therefore replace $\theta$ with 45&deg;, and n<sub>t</sub> with 1 (since that is the ior of the air around the prism) and solve for n<sub>i</sub>:</br>
+			$n_1 = {sin(90^{\circ}) \over sin(45^{\circ})}$ which is just $\sqrt{2}$
+		</p>
+		<p>
+			<b>Part b</b></br>
+			Refer to the picture slide below. We calculated in part a that light will totally internally reflect off the back side as long as the ior of the prism glass was higher than 1.41, which it is, in this case. Since the triangle is isoceles and symmetrical, no matter where the beam is placed, as long as it enters normal to the hypotenuse, there will be total internal reflection and the beam will exit from the hypotenuse in the opposite direction that it entered, i.e. 180&deg;.
+		<p>
+			<b>Part c</b></br>
+			Use Snell's Law:</br>
+			${sin(\theta_1) \over sin(\theta_2)} = {n_2 \over n_1}$</br>
+			Where $n_1$ is the ior of the surroundings (assuming air, n=1), $\theta_1$ is the angle from the normal of entry, and $n_2$ is the ior of the glass prism. The equation then becomes</br>
+			$\theta_2 = {arcsin({sin(\theta_1) \over n_2})}$
+		</p>
+		<p>
+			<b>Part d</b></br>
+			To determine whether the beam actually internally reflects at all if it enters at the angle given in Part c, we can use Snell's law again to attempt to find what angle the beam will exit the other end of the prism.</br>
+			The angle that is normal to the 45&deg; back edge (hereby named $\theta_{glass}$) will be 45&deg; minus the angle found in Part c (refer to diagram in part f for a clearer visual representation of this)</br>
+			The equation to be used then becomes this:</br>
+			$\theta_{air} = {arcsin(n_{glass} sin(\theta_{glass}))}$</br>
+			You can try using this equation with your own numbers, but knowing that the answer from part c was probably very small, and the ior of the prism is greater than 1.41, there ends up being an error because we are trying to calculate the arcsin of a value greater than the domain of definition of arcsin. Therefore the light must be undergoing total internal reflection, and considering the symmetrical properties of the prism, reflects off of the other back edge as well.
+		</p>
+		<p>
+			<b>Part e</b></br>
+			If the light internally reflects off of both back surfaces, then the situation becomes fairly similar to Part b. With respect to the angle of the incoming light, there is once again a 180&deg; turnaround for the beam.
+		</p>
+		<p>
+			<b>Part f</b></br>
+			<img src="imgs/capa11_q6.jpg" alt="q6 diagram" width="400"></br>
+			For the light to experience total internal reflection, refer back to the equation used in Part a:</br>
+			$n_{glass} sin (\theta_{glass}) = n_{air} sin (90^{\circ})$</br>
+			Rearrange the equation to find the greatest possible angle the light must hit the back edge to experience total internal reflection:</br>
+			$\theta_{glass} = {arcsin({sin(90^{\circ}) \over n_{glass}})}$</br>
+			To find the angle normal to the hypotenuse of the prism, take 45&deg; (which is the angle between the normal of the back edge and the normal of the hypotenuse) and subtract $\theta_{glass}$ from it.</br>
+			This angle (labeled $\theta_2$ on diagram) is the greatest angle that the light can be bent from the normal on entering the prism glass. Knowing this angle, use Snell's Law again to find the angle of entry.</br>
+			$ \theta = {arcsin({n_{glass} sin(\theta_2) \over n_{air}})}$
+		</p>
+			</div>
+		</div>
+
+	</div>
+
+	<div id="slide8">
+
+	</div>
+
+	<div id="slide2">
+
+		<h1 id="q7">Question 7</h1>
+		<p>
+			Note: entering values is not required</br>
+			<!--Wavelength of Beam 1 <input value="N/A" id="q7_l1" />nm</br>
+			Intensity I<sub>1</sub> of Beam 1 <input value="N/A" id="q7_inty1" />W/m<sup>2</sup></br>
+			Diameter of Circular Beam 1 <input value="N/A" id="q7_d1" />mm</br>
+			Wavelength of Beam 2 <input value="N/A" id="q7_l2" />nm</br>
+			Intensity I<sub>2</sub> of Beam 2 <input value="N/A" id="q7_inty2" />W/m<sup>2</sup></br>
+			Diameter of Circular Beam 2 <input value="N/A" id="q7_d2" />mm</br>
+			Angle of Beams Crossing <input value="N/A" id="q7_ang" />&deg;</br>
+		</p>
+		<button onclick="question7()">Calculate</button>
+		<p>-->
+			answer: <input id="q7_ans" value="0.00 W/m^2" onclick="SelectAll('q7_ans');" readonly />
+		</p>
+		<button class="reveal">Explanation</button>
+		<div class="toggle_container">
+			<div class="block">
+		<p>	
+			The two beams (of equal amplitude) simply travel through eachother (there is no scattering), so the scattered intensity is zero. 
+		</p>
+			</div>
+		</div>
+	</div>
+
+	<div id="slide9">
+
+	</div>
+
+	<div id="slide2">
+
+		<h1 id="q8">Question 8</h1>
+		<p>
+			Diameter of Tank  <input type="number" id="q8_d" />m</br>
+			Angle of Sun  <input type="number" id="q8_ang" />&deg;</br>
+		</p>
+		<button onclick="question8()">Calculate</button>
+		<p>
+			answer: <input id="q8_ans" onclick="SelectAll('q8_ans');" readonly />
+		</p>
+		<button class="reveal">Explanation</button>
+		<div class="toggle_container">
+			<div class="block">
+		<p>	
+			<img src="imgs\capa11_q8.jpg" alt="q8 diagram" width="400"></br>
+			Refer to the above diagram. To find the angle of incidence ($\theta_i$ on diagram), the angle of the sun from the horizon is subtracted from 90&deg;.</br>
+			We can then use Snell's Law to solve for the angle of refraction, knowing that the ior of air is 1, and the ior of water is 1.33.</br>
+			$\theta_r = {arcsin({sin(\theta_i) \over 1.33})}$</br>
+			Since the ray of sunlight and the cross section of the cylindrical tank make a right angle triangle, tangent can be used to find the adjacent dimension.</br>
+			${d \over tan(\theta_r)} = h$ 
+		</p>
+			</div>
+		</div>
+	</div>
+
+	<div id="slide10">
+
+	</div>
+
+	<div id="slide2">
+
+		<h1 id="q9">Question 9</h1>
+		<p>
+			Note: writing values of wavelengths is not required</br>
+			Indicent Angle of Light  <input type="number" id="q9_ang" />&deg;</br>
+			Thickness of Glass  <input type="number" id="q9_t" />cm</br>
+			Indice of Refraction at (Smaller) Wavelength of <input value="~400" id="q9_w1" />nm <input type="number" id="q9_ior1" /></br>
+			Indice of Refraction at (Larger) Wavelength of <input value="~700" id="q9_w2" />nm <input type="number" id="q9_ior2" /></br>
+		</p>
+		<button onclick="question9()">Calculate</button>
+		<p>
+			answer: <input id="q9_ans" onclick="SelectAll('q9_ans');" readonly />
+		</p>
+		<button class="reveal">Explanation</button>
+		<div class="toggle_container">
+			<div class="block">
+		<p>	
+			<img src="imgs\capa11_q9.jpg" alt="q9 diagram" width="500"></br>
+			Assume that the wavelengths given are the upper and lower boundaries of the visible white light. Since there is a different index of refraction for the glass depending on the wavelength of light, the two angles of refraction need to be calculated separately, using Snell's Law.</br>
+			Use $\theta_{r1} = {arcsin({sin(\theta_i) \over n_{\lambda_s}})}$ for the smaller angle, and similarly use $\theta_{r2} = {arcsin({sin(\theta_i) \over n_{\lambda_l}})}$ for the larger angle.<br>
+			Looking at the line normal to the slab of glass, one can notice that it makes a right angle triangle, with the difference of the dimensions of the side opposite to the angles of refraction being the width of the beam within the slab of glass. We can therefore use tangent to solve for these dimensions, as the width of the adjacent side is the thickness of the slab.</br>
+			$w_{inglass} = {d tan(\theta_{r2}) - d tan(\theta_{r1})}$</br>
+			If we draw a line through the bottom bound of the exiting beam to make a right angle triangle, we can solve for the final width of the exiting beam.</br>
+			<img src="imgs\capa11_q9z.jpg" alt="q9 diagram zoomed" width="200"></br>
+			Using Snell's Law, the exiting beam can be calculated (or reasoned) to be same angle from the normal as it was on entry, so that we can solve for all the angles of the little right triangle. The top angle is 90&deg; minus $\theta_i$, so through convention (all angles in a triangle must add up to 180&deg;) the bottom angle is the same as $\theta_i$. We can proceed to use cosine to find the dimensions of the adjacent side:</br>
+			$w = {w_{inglass} cos(\theta_i)}$
+		</p>
+			</div>
+		</div>
+	</div>
+
+	<div id="slide11">
+
+	</div>
+
+	<div id="slide2">
+
+		<h1 id="q10">Question 10</h1>
+		<p>
+			Angle of First Ray  <input type="number" id="q10_ang1" />&deg;</br>
+			Angle of Second Ray  <input type="number" id="q10_ang2" />&deg;</br>
+		</p>
+		<button onclick="question10()">Calculate</button>
+		<p>
+			answer: <input id="q10_ans" onclick="SelectAll('q10_ans');" readonly />
+		</p>
+		<button class="reveal">Explanation</button>
+		<div class="toggle_container">
+			<div class="block">
+		<p>	
+			The Law of Reflection dictates that $\theta_i = \theta_r$. Both angles will reflect off at the same angle they hit the mirror at with respect to the normal, so the angle between them is the difference between the larger angle and the smaller one.</br>
+			$\theta_{diff} = {\theta_2 - \theta_1}$
+		</p>
+			</div>
+		</div>
+	</div>
+
+<div id="slide12">
+
+	</div>
+
+	<div id="slide2">
+
+		<h1 id="q11">Question 11</h1>
+		<p>
+			Height of Mirror  <input type="number" id="q11_h" />m</br>
+			Distance of Woman from Mirror  <input type="number" id="q11_dw" />m</br>
+			Distance of Tree from Mirror <input type="number" id="q11_dm" />m</br>
+		</p>
+		<button onclick="question11()">Calculate</button>
+		<p>
+			answer: <input id="q11_ans" onclick="SelectAll('q11_ans');" readonly />
+		</p>
+		<button class="reveal">Explanation</button>
+		<div class="toggle_container">
+			<div class="block">
+		<p>	
+			According to the magnification equation</br>
+			$M = {h \over h_0}$ and $M = {d \over d_0}$, where $h_0$ is the object's actual height, and $h$ is the image's height.
+			M is equal to 1 for plane mirrors, and the equations can be equated so that</br>
+			${h \over h_0} = {d \over d_0}$.</br>
+			Since the tree fills the entire mirror, the height of the image ($h$) is the height of the mirror. The distance to the object ($d_0$) is the distance from the tree to the mirror ($l$) plus the distance from the mirror to the observer's eye ($d$), so after rearranging the magnification equation to solve for $h_0$, the height of the tree is</br>
+			$h_0 = {h(l+d) \over d}$
+		</p>
+			</div>
+		</div>
+	</div>
+
+	<div id="slide13">
+		<div>
+			<p>
+				Thanks for visiting!
+			</p>
+		</div>
+	</div>
+	
+
+</body>
+</html>

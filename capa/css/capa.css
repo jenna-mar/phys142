@@ -1,0 +1,351 @@
+.bg {
+    /*background:url(../imgs/cern.jpg) no-repeat;*/
+    position:fixed;
+    background-size: 108%;
+    width: 100%;
+    height: 1000%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    }
+
+body{
+   /*background-position:center;
+   background-image:url(../imgs/cern.jpg);
+   background-size: 100%;
+   background-attachment: fixed;
+   background-repeat: no-repeat;
+   height: 1000%;
+
+     background-color:rgba(255,255,255,1.1);
+     background-color: rgb(200, 54, 54); The Fallback */
+   background-color: rgba(200, 54, 54, 0.5);
+
+    text-align:center;
+    padding-top: 0em 0em 0em 0em;
+    color:#4f4f4f;
+    font-family: 'autor';
+   /* 
+    font-family: main, Calibri;
+    
+    width: 50em;
+    margin: 1em auto; /* center */ 
+    /*padding: 3em;
+    border: 0em solid black;
+    -moz-box-shadow: 0 0 5px 5px #a8a7a7;
+    -webkit-box-shadow: 0 0 5px 5px#a8a7a7;
+    box-shadow: 0 0 5px 5px #a8a7a7;*/
+
+}
+
+h1{
+  font-family: "vintage", "HelveticaNeue-Light", "Garamond";
+  font-size: 4em;
+}
+
+body {
+  background-color: #000000;
+  font-size: 1.1em;
+  margin: 0px 0px 0px 0px;
+}
+
+input[type="number"] {
+    font-family: 'autor', Calibri;
+    font-size: .6em;
+}
+
+input{
+    font-family: 'autor', Calibri;
+    font-size: .6em;
+}
+
+button{
+    font-family: 'autor', Calibri;
+    font-size: .6em;
+}
+
+
+
+@media (min-width:800px){
+  #div1{
+    width:40%;
+    display:inline-block;
+    text-align:center;
+    background-color: red;
+  }
+
+  #div2{
+    text-align:center;
+    width:100%;
+    height: 141em;
+    padding-left: 0em;
+    margin-right: 0em;
+    display:block;
+    background-color: rgba(200,220,220,.7);
+    position: relative;
+    z-index: 1;
+  }
+}
+
+
+nav {
+     position: fixed;
+     z-index: 2;
+    left: 0;
+    top: 0;
+    width: 100%;
+  background-color: #fffffa;
+  border: 1px solid #dedede;
+  border-radius: .1em;
+  box-shadow: 0 .4em .4em -.35em rgba(0, 0, 0, 0.2);
+  color: #888;
+  display: block;
+  margin: 0px 0px 0px 0px;
+  font-size: 1.3em;
+  /*overflow: hidden;*/
+  width: 100%; 
+}
+  nav ul {
+    margin: 0;
+    padding: 0;
+  }
+
+    nav ul li {
+      display: inline-block;
+      list-style-type: none;
+      
+      -webkit-transition: all 0.2s;
+        -moz-transition: all 0.2s;
+        -ms-transition: all 0.2s;
+        -o-transition: all 0.2s;
+        transition: all 0.2s; 
+    }
+      
+      nav > ul > li > a > .caret {
+        border-top: 0em solid #aaa;
+        border-right: 0em solid transparent;
+        border-left: 10em solid transparent;
+        content: "";
+        display: inline-block;
+        height: 0;
+        width: 0;
+        vertical-align: middle;
+  
+        -webkit-transition: color 0.1s linear;
+          -moz-transition: color 0.1s linear;
+        -o-transition: color 0.1s linear;
+          transition: color 0.1s linear; 
+      }
+
+      nav > ul > li > a {
+        color: #aaa;
+        display: block;
+        line-height: 2.6em;
+        padding: 0 .8em;
+        text-decoration: none;
+      }
+
+        nav > ul > li:hover {
+          background-color: rgb( 40, 44, 47 );
+        }
+
+        nav > ul > li:hover > a {
+          color: rgb( 255, 255, 255 );
+        }
+
+        nav > ul > li:hover > a > .caret {
+          border-top-color: rgb( 255, 255, 255 );
+        }
+      
+      nav > ul > li > div {
+        background-color: rgb( 40, 44, 47 );
+        border-top: 0;
+        border-radius: 0 0 4px 4px;
+        box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.055);
+        display: none;
+        margin: 0;
+        opacity: 0;
+        position: absolute;
+        width: 165px;
+        visibility: hidden;
+        z-index: 100;
+  
+        -webkit-transiton: opacity 0.2s;
+        -moz-transition: opacity 0.2s;
+        -ms-transition: opacity 0.2s;
+        -o-transition: opacity 0.2s;
+        -transition: opacity 0.2s;
+      }
+
+        nav > ul > li:hover > div {
+          display: block;
+          opacity: 1;
+          visibility: visible;
+        }
+
+          nav > ul > li > div ul > li {
+            display: block;
+          }
+
+            nav > ul > li > div ul > li > a {
+              color: #fff;
+              display: block;
+              padding: 12px 24px;
+              text-decoration: none;
+            }
+
+              nav > ul > li > div ul > li:hover > a {
+                background-color: rgba( 255, 255, 255, 0.1);
+              }
+
+div{
+  box-shadow:  #aaa;
+}
+
+#opaque{
+  opacity: 1 !important;
+  color: rgb( 60, 60, 52 ) !important;
+  text-shadow: 0.1em 0.1em 0.15em #aaa;
+  font-size: 2em;
+  padding: 5em 5em 5em 5em;
+  background-color: rgba(230,230,230,.4);
+}
+
+#slide1, #slide2{  }
+#slide1{
+  opacity: 1;
+  background:url(../imgs/cern.jpg) 50% 0 no-repeat fixed;
+  opacity: .7;
+  color: #fff;
+  height: 30em;
+  display: inherit;
+  margin: 0;
+  padding: 10em 0 19em 0;
+  background-size: cover;
+ 
+}
+
+#slide2{
+  background-color: #fff;
+
+  height: auto;
+  margin: 0 auto;
+  overflow: hidden;
+   box-shadow: 0em 5em 10em #282828;
+
+}
+
+#slide3{
+  opacity: 0.4;
+  background: url(../imgs/bubble.jpg) 50% 0 no-repeat fixed;
+  color: #fff;
+  height: 25em;
+  padding: 170px 0 200px 0; 
+  background-size: cover;
+}
+
+#slide4{
+  opacity: 0.4;
+  background: url(../imgs/big.jpg) 50% 0 no-repeat fixed;
+  color: #fff;
+  height: 25em;
+  padding: 170px 0 200px 0; 
+  background-size: cover;
+}
+
+#slide5{
+  opacity: 0.4;
+  background: url(../imgs/space.jpg) 50% 0 no-repeat fixed;
+  color: #fff;
+  height: 25em;
+  padding: 170px 0 200px 0; 
+  background-size: cover;
+}
+
+#slide6{
+  opacity: 0.4;
+  background: url(../imgs/wire.jpg) 50% 0 no-repeat fixed;
+  color: #fff;
+  height: 25em;
+  padding: 170px 0 200px 0; 
+  background-size: cover;
+}
+
+#slide7{
+  opacity: 0.4;
+  background: url(../imgs/flare.jpg) 50% 0 no-repeat fixed;
+  color: #fff;
+  height: 25em;
+  padding: 20em 0 5em 0; 
+  background-size: cover;
+}
+
+#slide8{
+  opacity: 0.4;
+  background: url(../imgs/prism01e.jpg) 50% 0 no-repeat fixed;
+  color: #fff;
+  height: 20em;
+  padding: 20em 0 10em 0; 
+  background-size: cover;
+}
+
+#slide9{
+  opacity: 0.4;
+  background: url(../imgs/nixie.jpg) 50% 0 no-repeat fixed;
+  color: #fff;
+  height: 20em;
+  padding: 20em 0 10em 0; 
+  background-size: cover;
+}
+
+#slide10{
+  opacity: 0.4;
+  background: url(../imgs/bokeh.jpg) 50% 0 no-repeat fixed;
+  color: #fff;
+  height: 20em;
+  padding: 20em 0 10em 0; 
+  background-size: cover;
+}
+
+#slide11{
+  opacity: 0.4;
+  background: url(../imgs/solareclipse.jpg) 50% 0 no-repeat fixed;
+  color: #fff;
+  height: 20em;
+  padding: 20em 0 10em 0; 
+  background-size: cover;
+}
+
+#slide12{
+  opacity: 0.4;
+  background: url(../imgs/plasma.jpg) 50% 0 no-repeat fixed;
+  color: #fff;
+  height: 20em;
+  padding: 20em 0 10em 0; 
+  background-size: cover;
+}
+
+#slide13{
+  opacity: 0.4;
+  background: url(../imgs/dbz.jpg) 50% 0 no-repeat fixed;
+  color: #fff;
+  height: 20em;
+  padding: 20em 0 10em 0; 
+  background-size: cover;
+}
+
+@font-face {
+    font-family: 'vintage';
+    src: url('../fonts/2Dumb.ttf');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'autor';
+    src: url('../fonts/AutourOne-Regular.otf');
+    font-weight: normal;
+    font-style: normal;
+
+}
